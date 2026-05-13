@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parkinson's Research Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1410;
+      --paper: #faf7f2;
+      --warm-mid: #e8e0d3;
+      --accent: #c0392b;
+      --accent-soft: #e8b4af;
+      --gold: #c9973a;
+      --muted: #7a6e65;
+      --section-gap: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--warm-mid);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px 80px 60px;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4vw, 4.2rem);
+      font-weight: 900; line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+    .hero-headline em { font-style: italic; color: var(--accent); }
+    .hero-subhead {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 440px; margin-bottom: 48px; line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--ink); color: var(--paper);
+      padding: 16px 36px; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .hero-cta:hover { background: var(--accent); }
+    .hero-cta .arrow { font-size: 1rem; }
+
+    .hero-right {
+      background: var(--ink);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 60px;
+    }
+    .hero-bg-text {
+      position: absolute; top: -20px; right: -10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22vw; font-weight: 900; color: rgba(255,255,255,0.03);
+      line-height: 1; pointer-events: none; user-select: none;
+    }
+    .hero-stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      position: relative; z-index: 2;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.05);
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.3s;
+    }
+    .hero-stat:hover { background: rgba(255,255,255,0.09); }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--paper); line-height: 1;
+    }
+    .hero-stat-num span { color: var(--accent); }
+    .hero-stat-label {
+      font-size: 0.78rem; color: rgba(255,255,255,0.45);
+      margin-top: 8px; line-height: 1.5;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: var(--section-gap) 60px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      color: var(--ink); margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; }
+    .section-lead {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 600px; line-height: 1.85;
+    }
+
+    /* ── WHAT IS PD ── */
+    .what-is {
+      background: #fff;
+      border-top: 1px solid var(--warm-mid);
+      border-bottom: 1px solid var(--warm-mid);
+    }
+    .what-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 56px;
+    }
+    .what-prose p { font-size: 1rem; color: #3d3530; line-height: 1.9; margin-bottom: 20px; }
+    .what-prose p strong { color: var(--ink); font-weight: 500; }
+    .what-prose blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 16px 24px; margin: 32px 0;
+      background: var(--paper);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-style: italic;
+      color: var(--ink); line-height: 1.7;
+    }
+
+    .brain-diagram {
+      background: var(--ink); border-radius: 4px;
+      padding: 40px; text-align: center;
+      position: relative;
+    }
+    .brain-svg { width: 100%; max-width: 320px; }
+    .brain-caption {
+      margin-top: 20px; font-size: 0.8rem;
+      color: rgba(255,255,255,0.45); line-height: 1.6;
+    }
+    .brain-caption strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+    /* ── SYMPTOMS ── */
+    .symptoms { background: var(--paper); }
+    .symptoms-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; margin-top: 56px;
+      border: 1px solid var(--warm-mid);
+    }
+    .symptom-card {
+      padding: 36px 32px;
+      background: #fff;
+      transition: background 0.2s;
+    }
+    .symptom-card:hover { background: var(--paper); }
+    .symptom-icon {
+      font-size: 2rem; margin-bottom: 16px;
+      display: block;
+    }
+    .symptom-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 10px; color: var(--ink);
+    }
+    .symptom-body { font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
+    .symptom-tag {
+      display: inline-block; margin-top: 12px;
+      font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 10px;
+      background: var(--warm-mid); color: var(--muted);
+    }
+    .symptom-tag.motor { background: #fdecea; color: var(--accent); }
+
+    /* ── KNOWN / UNKNOWN ── */
+    .known-unknown {
+      background: var(--ink); color: var(--paper);
+    }
+    .known-unknown .section-title { color: var(--paper); }
+    .known-unknown .section-lead { color: rgba(255,255,255,0.5); }
+    .ku-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; margin-top: 56px;
+    }
+    .ku-col { padding: 0; }
+    .ku-header {
+      padding: 24px 40px;
+      font-size: 0.72rem; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 500;
+    }
+    .ku-header.known { background: var(--gold); color: var(--ink); }
+    .ku-header.unknown { background: var(--accent); color: #fff; }
+    .ku-item {
+      padding: 28px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .ku-item:hover { background: rgba(255,255,255,0.03); }
+    .ku-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 7px;
+    }
+    .known .ku-dot { background: var(--gold); }
+    .unknown .ku-dot { background: var(--accent); }
+    .ku-text { font-size: 0.92rem; color: rgba(255,255,255,0.72); line-height: 1.7; }
+    .ku-text strong { color: rgba(255,255,255,0.92); font-weight: 500; }
+
+    /* ── IMPACT ── */
+    .impact { background: var(--paper); }
+    .impact-numbers {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; margin-top: 56px;
+      border: 1px solid var(--warm-mid);
+    }
+    .impact-num-card {
+      padding: 40px 32px; background: #fff;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .impact-num-card:hover { background: var(--paper); }
+    .impact-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900;
+      line-height: 1; color: var(--ink);
+    }
+    .impact-big span { color: var(--accent); }
+    .impact-desc {
+      font-size: 0.82rem; color: var(--muted);
+      margin-top: 10px; line-height: 1.6;
+    }
+
+    /* ── WHO GETS IT ── */
+    .who { background: #fff; border-top: 1px solid var(--warm-mid); }
+    .who-flex {
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 80px; align-items: center; margin-top: 56px;
+    }
+    .who-prose p { font-size: 1rem; color: #3d3530; line-height: 1.9; margin-bottom: 18px; }
+    .who-prose p strong { color: var(--ink); font-weight: 500; }
+    .risk-list { margin-top: 24px; }
+    .risk-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 18px 0; border-bottom: 1px solid var(--warm-mid);
+    }
+    .risk-badge {
+      flex-shrink: 0;
+      background: var(--ink); color: var(--paper);
+      font-size: 0.7rem; font-weight: 500;
+      padding: 4px 10px; letter-spacing: 0.05em;
+      text-transform: uppercase; margin-top: 2px;
+    }
+    .risk-text { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+    .risk-text strong { color: var(--ink); }
+
+    /* ── OUR LAB ── */
+    .our-lab {
+      background: var(--paper);
+    }
+    .lab-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 56px;
+    }
+    .lab-prose p { font-size: 1rem; color: #3d3530; line-height: 1.9; margin-bottom: 20px; }
+    .lab-prose p strong { color: var(--ink); font-weight: 500; }
+    .research-pillars { display: flex; flex-direction: column; gap: 2px; }
+    .pillar {
+      background: var(--ink); color: var(--paper);
+      padding: 28px 32px;
+      display: grid; grid-template-columns: auto 1fr; gap: 20px;
+      align-items: start; cursor: default;
+      transition: background 0.2s;
+    }
+    .pillar:hover { background: var(--accent); }
+    .pillar-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: rgba(255,255,255,0.2); line-height: 1;
+    }
+    .pillar-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 6px; color: var(--paper);
+    }
+    .pillar-content p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.45);
+      padding: 48px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--paper);
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-note { font-size: 0.8rem; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 0.75rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 400px; }
+      .hero-left { padding: 60px 24px; }
+      .section { padding: 80px 24px; }
+      .what-grid, .lab-grid, .ku-grid, .who-flex { grid-template-columns: 1fr; gap: 40px; }
+      .symptoms-grid { grid-template-columns: 1fr 1fr; }
+      .impact-numbers { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#"><span>PD</span> Research Lab</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">About PD</a></li>
+      <li><a href="#">Our Research</a></li>
+      <li><a href="#">Publications</a></li>
+      <li><a href="#">Team</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Parkinson's Disease Research Laboratory</p>
+      <h1 class="hero-headline">
+        A disease that<br/> takes hold<br/> <em>quietly,</em><br/> then loudly.
+      </h1>
+      <p class="hero-subhead">
+        Over 10 million people worldwide live with Parkinson's disease — yet most people don't understand what it is until it touches their family. We're working to change that, and to change the disease itself.
+      </p>
+      <a href="#what-is" class="hero-cta">Learn about Parkinson's <span class="arrow">↓</span></a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-bg-text">PD</div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="hero-stat-num">10<span>M+</span></div>
+          <div class="hero-stat-label">people living with PD worldwide right now</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">90<span>K</span></div>
+          <div class="hero-stat-label">new U.S. diagnoses every single year</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span>#</span>2</div>
+          <div class="hero-stat-label">most common neurodegenerative disease after Alzheimer's</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span>0</span></div>
+          <div class="hero-stat-label">cures exist — only treatments for symptoms</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS PD -->
+  <section class="section what-is" id="what-is">
+    <div class="section-inner">
+      <p class="section-label fade-up">Understanding the Disease</p>
+      <h2 class="section-title fade-up">So — what actually <em>is</em> Parkinson's?</h2>
+      <p class="section-lead fade-up">Here's the honest, plain-language answer.</p>
+      <div class="what-grid">
+        <div class="what-prose fade-up">
+          <p>
+            Deep in your brain is a small region called the <strong>substantia nigra</strong> — Latin for "black substance." It's named for the dark pigment in the neurons that live there. These neurons do one critical job: they make <strong>dopamine</strong>, a chemical messenger your brain uses to coordinate smooth, controlled movement.
+          </p>
+          <p>
+            In Parkinson's disease, these dopamine-producing cells <strong>slowly die off</strong>. Nobody fully knows why. As they disappear, the brain loses its ability to send clean movement signals to your muscles. The result? Tremors, stiffness, slowness, and eventually, much more.
+          </p>
+          <blockquote>
+            "By the time most people are diagnosed, they've already lost 60–80% of their dopamine-producing neurons."
+          </blockquote>
+          <p>
+            That's one of the most heartbreaking truths of this disease: it's often well underway before anyone notices. The brain compensates quietly, until it can't anymore.
+          </p>
+          <p>
+            Parkinson's is also more than a movement disorder. Sleep problems, depression, cognitive changes, and loss of smell can all precede the tremors by <strong>years — sometimes over a decade.</strong>
+          </p>
+        </div>
+        <div class="brain-diagram fade-up">
+          <svg class="brain-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Simplified brain outline -->
+            <ellipse cx="150" cy="140" rx="120" ry="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+            <!-- Brain folds suggestion -->
+            <path d="M80 100 Q110 80 140 100 Q170 120 200 100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <path d="M70 130 Q100 110 130 130 Q160 150 190 130 Q210 120 230 130" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <path d="M80 160 Q115 145 150 160 Q185 175 220 160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <!-- Substantia Nigra location -->
+            <circle cx="148" cy="190" r="18" fill="rgba(192,57,43,0.25)" stroke="rgba(192,57,43,0.8)" stroke-width="1.5"/>
+            <circle cx="148" cy="190" r="8" fill="rgba(192,57,43,0.6)"/>
+            <!-- Label line -->
+            <line x1="166" y1="183" x2="210" y2="158" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <text x="214" y="154" fill="rgba(255,255,255,0.6)" font-size="10" font-family="DM Sans, sans-serif">Substantia Nigra</text>
+            <!-- Dopamine dots (healthy) -->
+            <circle cx="100" cy="145" r="3" fill="rgba(201,151,58,0.7)"/>
+            <circle cx="115" cy="130" r="3" fill="rgba(201,151,58,0.7)"/>
+            <circle cx="130" cy="150" r="3" fill="rgba(201,151,58,0.7)"/>
+            <circle cx="170" cy="135" r="3" fill="rgba(201,151,58,0.5)"/>
+            <circle cx="185" cy="150" r="3" fill="rgba(201,151,58,0.4)"/>
+            <!-- Fading dots (depleted) -->
+            <circle cx="160" cy="155" r="2" fill="rgba(201,151,58,0.2)"/>
+            <circle cx="145" cy="165" r="2" fill="rgba(201,151,58,0.15)"/>
+            <!-- Label: dopamine -->
+            <text x="88" y="118" fill="rgba(201,151,58,0.7)" font-size="9" font-family="DM Sans, sans-serif">dopamine neurons</text>
+          </svg>
+          <div class="brain-caption">
+            <strong>The substantia nigra</strong> — a small, darkly-pigmented region near the base of the brain — is where the damage begins. Neurons here produce dopamine, essential for fluid movement. In Parkinson's, they die faster than they should, and the brain loses its conductor.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYMPTOMS -->
+  <section class="section symptoms" id="symptoms">
+    <div class="section-inner">
+      <p class="section-label fade-up">Recognizing the Signs</p>
+      <h2 class="section-title fade-up">It's more than a <em>tremor.</em></h2>
+      <p class="section-lead fade-up">The classic shaking hand is often what people picture — but Parkinson's announces itself in many other ways, some of which appear years before motor symptoms.</p>
+      <div class="symptoms-grid" style="margin-top: 56px;">
+        <div class="symptom-card fade-up">
+          <span class="symptom-icon">🤝</span>
+          <div class="symptom-title">Tremor</div>
+          <div class="symptom-body">A rhythmic shaking, often beginning in one hand at rest. The classic "pill-rolling" motion between thumb and finger. Usually one of the first visible signs.</div>
+          <span class="symptom-tag motor">Motor</span>
+        </div>
+        <div class="symptom-card fade-up">
+          <span class="symptom-icon">🐢</span>
+          <div class="symptom-title">Bradykinesia</div>
+          <div class="symptom-body">Slowness of movement. Everyday tasks — buttoning a shirt, signing your name, getting up from a chair — become laborious. Steps get smaller. The face may lose expression.</div>
+          <span class="symptom-tag motor">Motor</span>
+        </div>
+        <div class="symptom-card fade-up">
+          <span class="symptom-icon">🪨</span>
+          <div class="symptom-title">Rigidity</div>
+          <div class="symptom-body">Muscles stay stiff, limiting range of motion. Arms may not swing when walking. Neck and shoulders can ache. Rigidity can feel like exhaustion even after rest.</div>
+          <span class="symptom-tag motor">Motor</span>
+        </div>
+        <div class="symptom-card fade-up">
+          <span class="symptom-icon">🫀</span>
+          <div class="symptom-title">Loss of Smell</div>
+          <div class="symptom-body">One of the most common early warning signs — often dismissed as a cold or allergy. A reduced ability to detect odors can appear a full <strong>decade</strong> before a diagnosis.</div>
+          <span class="symptom-tag">Non-Motor / Early</span>
+        </div>
+        <div class="symptom-card fade-up">
+          <span class="symptom-icon">🌙</span>
+          <div class="symptom-title">Sleep Disruption</div>
+          <div class="symptom-body">REM sleep behavior disorder — physically acting out dreams — is strongly linked to PD. Some people unknowingly punch, kick, or shout during sleep years before any other symptom.</div>
+          <span class="symptom-tag">Non-Motor / Early</span>
+        </div>
+        <div class="symptom-card fade-up">
+          <span class="symptom-icon">🧠</span>
+          <div class="symptom-title">Mood & Cognition</div>
+          <div class="symptom-body">Depression, anxiety, and cognitive slowing are part of the disease — not just reactions to it. For many, these are among the most disabling aspects, yet they're often overlooked.</div>
+          <span class="symptom-tag">Non-Motor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KNOWN / UNKNOWN -->
+  <section class="section known-unknown" id="science">
+    <div class="section-inner">
+      <p class="section-label fade-up" style="color: var(--accent-soft);">The State of the Science</p>
+      <h2 class="section-title fade-up">What we know — and what we <em>don't.</em></h2>
+      <p class="section-lead fade-up">Honest science means acknowledging the gaps. Here's where the field stands.</p>
+      <div class="ku-grid fade-up">
+        <div class="ku-col known">
+          <div class="ku-header known">✓ &nbsp;What We Know</div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>Dopamine loss drives motor symptoms.</strong> When dopamine-producing neurons in the substantia nigra die, movement becomes increasingly difficult to control.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>A protein called alpha-synuclein plays a central role.</strong> In PD, it misfolds and clumps into "Lewy bodies" inside neurons — and those clumps appear to spread through the brain over time.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>Genetics matter — but they're not destiny.</strong> Mutations in genes like LRRK2, SNCA, and Parkin increase risk. But most people with PD have no family history.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>Environment is a factor.</strong> Pesticide exposure, head trauma, and industrial chemical exposure are all associated with elevated PD risk.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>Levodopa remains the gold-standard treatment.</strong> It replaces depleted dopamine and manages symptoms — but loses effectiveness as the disease progresses and causes complications over time.</div>
+          </div>
+        </div>
+        <div class="ku-col unknown">
+          <div class="ku-header unknown">? &nbsp;What We Still Don't Know</div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>What triggers the disease in the first place?</strong> Even in genetic cases, most carriers never develop PD. The initial spark — why neurons begin dying in some people and not others — remains unknown.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>How to stop it from progressing.</strong> Every treatment today manages symptoms. No drug, therapy, or intervention has been proven to slow, halt, or reverse the underlying neurodegeneration.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>How to diagnose it early enough.</strong> There is no blood test, no brain scan, no biomarker that definitively confirms PD — especially in early stages, before most neurons are already gone.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>Why it affects people so differently.</strong> Some live with manageable symptoms for decades; others deteriorate rapidly. We don't understand what drives these vastly different trajectories.</div>
+          </div>
+          <div class="ku-item">
+            <div class="ku-dot"></div>
+            <div class="ku-text"><strong>What role the gut-brain connection plays.</strong> Some evidence suggests PD may begin in the gut. The alpha-synuclein pathway and the gut microbiome are active areas of investigation — and largely unsolved.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT / NUMBERS -->
+  <section class="section impact" id="impact">
+    <div class="section-inner">
+      <p class="section-label fade-up">The Scope of the Problem</p>
+      <h2 class="section-title fade-up">The numbers <em>behind</em> the names.</h2>
+      <p class="section-lead fade-up">Parkinson's disease is one of the fastest-growing neurological disorders in the world.</p>
+      <div class="impact-numbers fade-up">
+        <div class="impact-num-card">
+          <div class="impact-big">1.2<span>M</span></div>
+          <div class="impact-desc">Americans projected to live with PD by 2030</div>
+        </div>
+        <div class="impact-num-card">
+          <div class="impact-big">+<span>50</span>%</div>
+          <div class="impact-desc">increase in new U.S. diagnoses vs. prior estimates — nearly 90,000/year</div>
+        </div>
+        <div class="impact-num-card">
+          <div class="impact-big"><span>$</span>112<span>B</span></div>
+          <div class="impact-desc">estimated annual global cost — care, lost productivity, disability</div>
+        </div>
+        <div class="impact-num-card">
+          <div class="impact-big">2<span>×</span></div>
+          <div class="impact-desc">expected doubling in worldwide cases by 2040, driven by aging populations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO GETS IT -->
+  <section class="section who" id="risk">
+    <div class="section-inner">
+      <p class="section-label fade-up">Who Is Affected</p>
+      <h2 class="section-title fade-up">Could it happen <em>to you?</em></h2>
+      <div class="who-flex">
+        <div class="who-prose fade-up">
+          <p>
+            Parkinson's is often thought of as "an old person's disease." It's true that age is the biggest risk factor — most people are diagnosed after 60. But <strong>roughly 10-15% of cases are diagnosed before age 50</strong>, a group often called "young-onset" PD.
+          </p>
+          <p>
+            You don't have to have a family history. You don't have to show any particular symptoms early on. The disease can quietly progress for years — in your gut, your nose, your sleep — before it ever announces itself in your hands.
+          </p>
+          <p>
+            If your grandfather slowed down in his later years and you assumed it was "just aging," it may have been Parkinson's. If your parent was told they had depression or anxiety before the tremors started, that's also common. Parkinson's is underdiagnosed, undertreated, and under-recognized — and that's part of why this research matters.
+          </p>
+        </div>
+        <div class="risk-list fade-up">
+          <div class="risk-item">
+            <div class="risk-badge">Age</div>
+            <div class="risk-text"><strong>60+ years old</strong> — risk rises sharply. PD affects about 1 in 100 people over 60.</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-badge">Sex</div>
+            <div class="risk-text"><strong>Men are 1.5× more likely</strong> to develop PD than women, though women often have a faster disease course.</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-badge">Genetics</div>
+            <div class="risk-text"><strong>Family history</strong> raises risk — but 90%+ of PD cases have no clear genetic cause.</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-badge">Environment</div>
+            <div class="risk-text"><strong>Pesticide and solvent exposure</strong> (e.g., paraquat, trichloroethylene) are among the strongest environmental risk factors identified.</div>
+          </div>
+          <div class="risk-item">
+            <div class="risk-badge">Head Injury</div>
+            <div class="risk-text"><strong>Repeated traumatic brain injury</strong> has been linked to elevated PD risk — one reason the connection to contact sports is studied closely.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR LAB -->
+  <section class="section our-lab" id="our-research">
+    <div class="section-inner">
+      <p class="section-label fade-up">Our Role</p>
+      <h2 class="section-title fade-up">Why <em>our lab,</em> and why now?</h2>
+      <p class="section-lead fade-up">We exist to close the gap between what we know and what we need to know — through rigorous, specific, human-focused science.</p>
+      <div class="lab-grid">
+        <div class="lab-prose fade-up">
+          <p>
+            Most labs pick a lane. Ours is the intersection of <strong>neuroscience, computational biology, and clinical translation</strong> — meaning we care equally about what's happening at the molecular level and whether it leads to something a patient can actually use.
+          </p>
+          <p>
+            We are motivated by the gap. We know a lot about what Parkinson's looks like, but far too little about how to stop it. We work on the hard problems: <strong>early biomarkers, disease mechanisms, and circuit-level disruptions</strong> that happen long before diagnosis.
+          </p>
+          <p>
+            Every experiment in this lab is aimed at one goal: shorten the time between the first neuron dying and the first person being helped. That is not a simple problem. It is the one worth solving.
+          </p>
+        </div>
+        <div class="research-pillars fade-up">
+          <div class="pillar">
+            <div class="pillar-num">01</div>
+            <div class="pillar-content">
+              <h4>Early Detection & Biomarkers</h4>
+              <p>Developing tools to identify Parkinson's before symptoms emerge — when treatment could actually prevent damage, not just manage it.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">02</div>
+            <div class="pillar-content">
+              <h4>Circuit & Systems Neuroscience</h4>
+              <p>Mapping how the loss of dopaminergic neurons disrupts broader brain circuits — and where those circuits might be therapeutically targeted.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03</div>
+            <div class="pillar-content">
+              <h4>Disease Modeling & Mechanisms</h4>
+              <p>Investigating how and why alpha-synuclein misfolds and spreads — and what might stop it at its source.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">04</div>
+            <div class="pillar-content">
+              <h4>Translational Research</h4>
+              <p>Bridging discoveries in the lab to testable interventions — working toward therapies that slow or halt neurodegeneration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><span>PD</span> Research Lab</div>
+    <div class="footer-note">University Research Laboratory · [Your Department] · [Your Institution]</div>
+  </footer>
+
+  <script>
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
