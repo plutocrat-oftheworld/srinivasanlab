@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Parkinson's Research Lab</title>
+  <title>Srinivasan Lab</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +30,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -57,7 +57,7 @@
     .nav-links a:hover { color: var(--ink); }
     .nav-links a.active { color: var(--accent); }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid; grid-template-columns: 1fr 1fr;
@@ -80,7 +80,6 @@
       color: var(--ink);
       margin-bottom: 28px;
     }
-    .hero-headline em { font-style: italic; color: var(--accent); }
     .hero-subhead {
       font-size: 1.1rem; color: var(--muted);
       max-width: 440px; margin-bottom: 48px; line-height: 1.8;
@@ -129,7 +128,7 @@
       margin-top: 8px; line-height: 1.5;
     }
 
-    /* ── SECTION WRAPPER ── */
+    /* SECTION WRAPPER */
     .section { padding: var(--section-gap) 60px; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
 
@@ -144,13 +143,12 @@
       font-weight: 800; line-height: 1.15;
       color: var(--ink); margin-bottom: 20px;
     }
-    .section-title em { font-style: italic; }
     .section-lead {
       font-size: 1.05rem; color: var(--muted);
       max-width: 600px; line-height: 1.85;
     }
 
-    /* ── WHAT IS PD ── */
+    /* WHAT IS PD */
     .what-is {
       background: #fff;
       border-top: 1px solid var(--warm-mid);
@@ -183,7 +181,7 @@
     }
     .brain-caption strong { color: rgba(255,255,255,0.75); font-weight: 500; }
 
-    /* ── SYMPTOMS ── */
+    /* SYMPTOMS */
     .symptoms { background: var(--paper); }
     .symptoms-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -214,7 +212,7 @@
     }
     .symptom-tag.motor { background: #fdecea; color: var(--accent); }
 
-    /* ── KNOWN / UNKNOWN ── */
+    /* KNOWN / UNKNOWN */
     .known-unknown {
       background: var(--ink); color: var(--paper);
     }
@@ -247,7 +245,7 @@
     .ku-text { font-size: 0.92rem; color: rgba(255,255,255,0.72); line-height: 1.7; }
     .ku-text strong { color: rgba(255,255,255,0.92); font-weight: 500; }
 
-    /* ── IMPACT ── */
+    /* IMPACT */
     .impact { background: var(--paper); }
     .impact-numbers {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -271,7 +269,7 @@
       margin-top: 10px; line-height: 1.6;
     }
 
-    /* ── WHO GETS IT ── */
+    /* WHO GETS IT */
     .who { background: #fff; border-top: 1px solid var(--warm-mid); }
     .who-flex {
       display: grid; grid-template-columns: 1.2fr 1fr;
@@ -294,10 +292,8 @@
     .risk-text { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
     .risk-text strong { color: var(--ink); }
 
-    /* ── OUR LAB ── */
-    .our-lab {
-      background: var(--paper);
-    }
+    /* OUR LAB */
+    .our-lab { background: var(--paper); }
     .lab-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: start; margin-top: 56px;
@@ -325,7 +321,65 @@
     }
     .pillar-content p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
-    /* ── FOOTER ── */
+    /* PUBLICATIONS */
+    .publications { background: #fff; border-top: 1px solid var(--warm-mid); }
+    .pub-list { margin-top: 56px; display: flex; flex-direction: column; gap: 2px; }
+    .pub-item {
+      background: var(--paper);
+      padding: 28px 36px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pub-item:hover { border-left-color: var(--accent); background: #fff; }
+    .pub-year {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+    }
+    .pub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 6px; line-height: 1.4;
+    }
+    .pub-authors { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
+    .pub-journal { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+
+    /* TEAM */
+    .team { background: var(--paper); }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 56px;
+    }
+    .team-card {
+      background: #fff; padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .team-card:hover { background: var(--paper); }
+    .team-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--warm-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--muted); margin-bottom: 20px;
+    }
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 4px;
+    }
+    .team-role {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .team-bio { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .team-section-label {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin: 56px 0 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--warm-mid);
+    }
+
+    /* FOOTER */
     footer {
       background: var(--ink); color: rgba(255,255,255,0.45);
       padding: 48px 60px;
@@ -336,16 +390,15 @@
       font-size: 1.1rem; font-weight: 700; color: var(--paper);
     }
     .footer-logo span { color: var(--accent); }
-    .footer-note { font-size: 0.8rem; }
 
-    /* ── ANIMATIONS ── */
+    /* ANIMATIONS */
     .fade-up {
       opacity: 0; transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 18px 24px; }
       .nav-links { gap: 18px; }
@@ -357,6 +410,7 @@
       .what-grid, .lab-grid, .ku-grid, .who-flex { grid-template-columns: 1fr; gap: 40px; }
       .symptoms-grid { grid-template-columns: 1fr 1fr; }
       .impact-numbers { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -364,25 +418,25 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="#"><span>PD</span> Research Lab</a>
+    <a class="nav-logo" href="#">Srinivasan <span>Lab</span></a>
     <ul class="nav-links">
       <li><a href="#" class="active">About PD</a></li>
-      <li><a href="#">Our Research</a></li>
-      <li><a href="#">Publications</a></li>
-      <li><a href="#">Team</a></li>
-      <li><a href="#">Projects</a></li>
+      <li><a href="#our-research">Our Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#projects">Projects</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Parkinson's Disease Research Laboratory</p>
+      <p class="hero-eyebrow">Srinivasan Laboratory</p>
       <h1 class="hero-headline">
-        A disease that<br/> takes hold<br/> <em>quietly,</em><br/> then loudly.
+        A disease that<br/> takes hold<br/> quietly,<br/> then loudly.
       </h1>
       <p class="hero-subhead">
-        Over 10 million people worldwide live with Parkinson's disease — yet most people don't understand what it is until it touches their family. We're working to change that, and to change the disease itself.
+        Over 10 million people worldwide live with Parkinson's disease, yet most people don't understand what it is until it touches their family. We're working to change that, and to change the disease itself.
       </p>
       <a href="#what-is" class="hero-cta">Learn about Parkinson's <span class="arrow">↓</span></a>
     </div>
@@ -403,7 +457,7 @@
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num"><span>0</span></div>
-          <div class="hero-stat-label">cures exist — only treatments for symptoms</div>
+          <div class="hero-stat-label">cures exist. Only treatments for symptoms.</div>
         </div>
       </div>
     </div>
@@ -413,54 +467,47 @@
   <section class="section what-is" id="what-is">
     <div class="section-inner">
       <p class="section-label fade-up">Understanding the Disease</p>
-      <h2 class="section-title fade-up">So — what actually <em>is</em> Parkinson's?</h2>
+      <h2 class="section-title fade-up">So, what actually is Parkinson's?</h2>
       <p class="section-lead fade-up">Here's the honest, plain-language answer.</p>
       <div class="what-grid">
         <div class="what-prose fade-up">
           <p>
-            Deep in your brain is a small region called the <strong>substantia nigra</strong> — Latin for "black substance." It's named for the dark pigment in the neurons that live there. These neurons do one critical job: they make <strong>dopamine</strong>, a chemical messenger your brain uses to coordinate smooth, controlled movement.
+            Deep in your brain is a small region called the <strong>substantia nigra</strong> (Latin for "black substance"), named for the dark pigment in the neurons that live there. These neurons do one critical job: they make <strong>dopamine</strong>, a chemical messenger your brain uses to coordinate smooth, controlled movement.
           </p>
           <p>
-            In Parkinson's disease, these dopamine-producing cells <strong>slowly die off</strong>. Nobody fully knows why. As they disappear, the brain loses its ability to send clean movement signals to your muscles. The result? Tremors, stiffness, slowness, and eventually, much more.
+            In Parkinson's disease, these dopamine-producing cells <strong>slowly die off</strong>. Nobody fully knows why. As they disappear, the brain loses its ability to send clean movement signals to your muscles. The result is tremors, stiffness, slowness, and eventually, much more.
           </p>
           <blockquote>
-            "By the time most people are diagnosed, they've already lost 60–80% of their dopamine-producing neurons."
+            "By the time most people are diagnosed, they've already lost 60 to 80% of their dopamine-producing neurons."
           </blockquote>
           <p>
-            That's one of the most heartbreaking truths of this disease: it's often well underway before anyone notices. The brain compensates quietly, until it can't anymore.
+            That's one of the most difficult truths of this disease: it's often well underway before anyone notices. The brain compensates quietly, until it can't anymore.
           </p>
           <p>
-            Parkinson's is also more than a movement disorder. Sleep problems, depression, cognitive changes, and loss of smell can all precede the tremors by <strong>years — sometimes over a decade.</strong>
+            Parkinson's is also more than a movement disorder. Sleep problems, depression, cognitive changes, and loss of smell can all precede the tremors by <strong>years, sometimes over a decade.</strong>
           </p>
         </div>
         <div class="brain-diagram fade-up">
           <svg class="brain-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-            <!-- Simplified brain outline -->
             <ellipse cx="150" cy="140" rx="120" ry="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-            <!-- Brain folds suggestion -->
             <path d="M80 100 Q110 80 140 100 Q170 120 200 100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
             <path d="M70 130 Q100 110 130 130 Q160 150 190 130 Q210 120 230 130" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
             <path d="M80 160 Q115 145 150 160 Q185 175 220 160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-            <!-- Substantia Nigra location -->
             <circle cx="148" cy="190" r="18" fill="rgba(192,57,43,0.25)" stroke="rgba(192,57,43,0.8)" stroke-width="1.5"/>
             <circle cx="148" cy="190" r="8" fill="rgba(192,57,43,0.6)"/>
-            <!-- Label line -->
             <line x1="166" y1="183" x2="210" y2="158" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
             <text x="214" y="154" fill="rgba(255,255,255,0.6)" font-size="10" font-family="DM Sans, sans-serif">Substantia Nigra</text>
-            <!-- Dopamine dots (healthy) -->
             <circle cx="100" cy="145" r="3" fill="rgba(201,151,58,0.7)"/>
             <circle cx="115" cy="130" r="3" fill="rgba(201,151,58,0.7)"/>
             <circle cx="130" cy="150" r="3" fill="rgba(201,151,58,0.7)"/>
             <circle cx="170" cy="135" r="3" fill="rgba(201,151,58,0.5)"/>
             <circle cx="185" cy="150" r="3" fill="rgba(201,151,58,0.4)"/>
-            <!-- Fading dots (depleted) -->
             <circle cx="160" cy="155" r="2" fill="rgba(201,151,58,0.2)"/>
             <circle cx="145" cy="165" r="2" fill="rgba(201,151,58,0.15)"/>
-            <!-- Label: dopamine -->
             <text x="88" y="118" fill="rgba(201,151,58,0.7)" font-size="9" font-family="DM Sans, sans-serif">dopamine neurons</text>
           </svg>
           <div class="brain-caption">
-            <strong>The substantia nigra</strong> — a small, darkly-pigmented region near the base of the brain — is where the damage begins. Neurons here produce dopamine, essential for fluid movement. In Parkinson's, they die faster than they should, and the brain loses its conductor.
+            <strong>The substantia nigra</strong> is where the damage begins. Neurons here produce dopamine, essential for fluid movement. In Parkinson's, they die faster than they should, and the brain loses its conductor.
           </div>
         </div>
       </div>
@@ -471,8 +518,8 @@
   <section class="section symptoms" id="symptoms">
     <div class="section-inner">
       <p class="section-label fade-up">Recognizing the Signs</p>
-      <h2 class="section-title fade-up">It's more than a <em>tremor.</em></h2>
-      <p class="section-lead fade-up">The classic shaking hand is often what people picture — but Parkinson's announces itself in many other ways, some of which appear years before motor symptoms.</p>
+      <h2 class="section-title fade-up">It's more than a tremor.</h2>
+      <p class="section-lead fade-up">The classic shaking hand is often what people picture, but Parkinson's announces itself in many other ways, some of which appear years before motor symptoms.</p>
       <div class="symptoms-grid" style="margin-top: 56px;">
         <div class="symptom-card fade-up">
           <span class="symptom-icon">🤝</span>
@@ -483,7 +530,7 @@
         <div class="symptom-card fade-up">
           <span class="symptom-icon">🐢</span>
           <div class="symptom-title">Bradykinesia</div>
-          <div class="symptom-body">Slowness of movement. Everyday tasks — buttoning a shirt, signing your name, getting up from a chair — become laborious. Steps get smaller. The face may lose expression.</div>
+          <div class="symptom-body">Slowness of movement. Everyday tasks like buttoning a shirt, signing your name, or getting up from a chair become laborious. Steps get smaller. The face may lose expression.</div>
           <span class="symptom-tag motor">Motor</span>
         </div>
         <div class="symptom-card fade-up">
@@ -495,19 +542,19 @@
         <div class="symptom-card fade-up">
           <span class="symptom-icon">🫀</span>
           <div class="symptom-title">Loss of Smell</div>
-          <div class="symptom-body">One of the most common early warning signs — often dismissed as a cold or allergy. A reduced ability to detect odors can appear a full <strong>decade</strong> before a diagnosis.</div>
+          <div class="symptom-body">One of the most common early warning signs, often dismissed as a cold or allergy. A reduced ability to detect odors can appear a full <strong>decade</strong> before a diagnosis.</div>
           <span class="symptom-tag">Non-Motor / Early</span>
         </div>
         <div class="symptom-card fade-up">
           <span class="symptom-icon">🌙</span>
           <div class="symptom-title">Sleep Disruption</div>
-          <div class="symptom-body">REM sleep behavior disorder — physically acting out dreams — is strongly linked to PD. Some people unknowingly punch, kick, or shout during sleep years before any other symptom.</div>
+          <div class="symptom-body">REM sleep behavior disorder, or physically acting out dreams, is strongly linked to PD. Some people unknowingly punch, kick, or shout during sleep years before any other symptom.</div>
           <span class="symptom-tag">Non-Motor / Early</span>
         </div>
         <div class="symptom-card fade-up">
           <span class="symptom-icon">🧠</span>
-          <div class="symptom-title">Mood & Cognition</div>
-          <div class="symptom-body">Depression, anxiety, and cognitive slowing are part of the disease — not just reactions to it. For many, these are among the most disabling aspects, yet they're often overlooked.</div>
+          <div class="symptom-title">Mood and Cognition</div>
+          <div class="symptom-body">Depression, anxiety, and cognitive slowing are part of the disease, not just reactions to it. For many, these are among the most disabling aspects, yet they're often overlooked.</div>
           <span class="symptom-tag">Non-Motor</span>
         </div>
       </div>
@@ -518,22 +565,22 @@
   <section class="section known-unknown" id="science">
     <div class="section-inner">
       <p class="section-label fade-up" style="color: var(--accent-soft);">The State of the Science</p>
-      <h2 class="section-title fade-up">What we know — and what we <em>don't.</em></h2>
+      <h2 class="section-title fade-up">What we know, and what we don't.</h2>
       <p class="section-lead fade-up">Honest science means acknowledging the gaps. Here's where the field stands.</p>
       <div class="ku-grid fade-up">
         <div class="ku-col known">
-          <div class="ku-header known">✓ &nbsp;What We Know</div>
+          <div class="ku-header known">What We Know</div>
           <div class="ku-item">
             <div class="ku-dot"></div>
             <div class="ku-text"><strong>Dopamine loss drives motor symptoms.</strong> When dopamine-producing neurons in the substantia nigra die, movement becomes increasingly difficult to control.</div>
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
-            <div class="ku-text"><strong>A protein called alpha-synuclein plays a central role.</strong> In PD, it misfolds and clumps into "Lewy bodies" inside neurons — and those clumps appear to spread through the brain over time.</div>
+            <div class="ku-text"><strong>A protein called alpha-synuclein plays a central role.</strong> In PD, it misfolds and clumps into "Lewy bodies" inside neurons, and those clumps appear to spread through the brain over time.</div>
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
-            <div class="ku-text"><strong>Genetics matter — but they're not destiny.</strong> Mutations in genes like LRRK2, SNCA, and Parkin increase risk. But most people with PD have no family history.</div>
+            <div class="ku-text"><strong>Genetics matter, but they're not destiny.</strong> Mutations in genes like LRRK2, SNCA, and Parkin increase risk. But most people with PD have no family history.</div>
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
@@ -541,14 +588,14 @@
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
-            <div class="ku-text"><strong>Levodopa remains the gold-standard treatment.</strong> It replaces depleted dopamine and manages symptoms — but loses effectiveness as the disease progresses and causes complications over time.</div>
+            <div class="ku-text"><strong>Levodopa remains the gold-standard treatment.</strong> It replaces depleted dopamine and manages symptoms, but loses effectiveness as the disease progresses and causes complications over time.</div>
           </div>
         </div>
         <div class="ku-col unknown">
-          <div class="ku-header unknown">? &nbsp;What We Still Don't Know</div>
+          <div class="ku-header unknown">What We Still Don't Know</div>
           <div class="ku-item">
             <div class="ku-dot"></div>
-            <div class="ku-text"><strong>What triggers the disease in the first place?</strong> Even in genetic cases, most carriers never develop PD. The initial spark — why neurons begin dying in some people and not others — remains unknown.</div>
+            <div class="ku-text"><strong>What triggers the disease in the first place.</strong> Even in genetic cases, most carriers never develop PD. Why neurons begin dying in some people and not others remains unknown.</div>
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
@@ -556,7 +603,7 @@
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
-            <div class="ku-text"><strong>How to diagnose it early enough.</strong> There is no blood test, no brain scan, no biomarker that definitively confirms PD — especially in early stages, before most neurons are already gone.</div>
+            <div class="ku-text"><strong>How to diagnose it early enough.</strong> There is no blood test, no brain scan, no biomarker that definitively confirms PD, especially in early stages, before most neurons are already gone.</div>
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
@@ -564,7 +611,7 @@
           </div>
           <div class="ku-item">
             <div class="ku-dot"></div>
-            <div class="ku-text"><strong>What role the gut-brain connection plays.</strong> Some evidence suggests PD may begin in the gut. The alpha-synuclein pathway and the gut microbiome are active areas of investigation — and largely unsolved.</div>
+            <div class="ku-text"><strong>What role the gut-brain connection plays.</strong> Some evidence suggests PD may begin in the gut. The alpha-synuclein pathway and the gut microbiome are active areas of investigation, and largely unsolved.</div>
           </div>
         </div>
       </div>
@@ -575,7 +622,7 @@
   <section class="section impact" id="impact">
     <div class="section-inner">
       <p class="section-label fade-up">The Scope of the Problem</p>
-      <h2 class="section-title fade-up">The numbers <em>behind</em> the names.</h2>
+      <h2 class="section-title fade-up">The numbers behind the names.</h2>
       <p class="section-lead fade-up">Parkinson's disease is one of the fastest-growing neurological disorders in the world.</p>
       <div class="impact-numbers fade-up">
         <div class="impact-num-card">
@@ -584,14 +631,14 @@
         </div>
         <div class="impact-num-card">
           <div class="impact-big">+<span>50</span>%</div>
-          <div class="impact-desc">increase in new U.S. diagnoses vs. prior estimates — nearly 90,000/year</div>
+          <div class="impact-desc">increase in new U.S. diagnoses vs. prior estimates, nearly 90,000/year</div>
         </div>
         <div class="impact-num-card">
           <div class="impact-big"><span>$</span>112<span>B</span></div>
-          <div class="impact-desc">estimated annual global cost — care, lost productivity, disability</div>
+          <div class="impact-desc">estimated annual global cost in care, lost productivity, and disability</div>
         </div>
         <div class="impact-num-card">
-          <div class="impact-big">2<span>×</span></div>
+          <div class="impact-big">2<span>x</span></div>
           <div class="impact-desc">expected doubling in worldwide cases by 2040, driven by aging populations</div>
         </div>
       </div>
@@ -602,31 +649,31 @@
   <section class="section who" id="risk">
     <div class="section-inner">
       <p class="section-label fade-up">Who Is Affected</p>
-      <h2 class="section-title fade-up">Could it happen <em>to you?</em></h2>
+      <h2 class="section-title fade-up">Could it happen to you?</h2>
       <div class="who-flex">
         <div class="who-prose fade-up">
           <p>
-            Parkinson's is often thought of as "an old person's disease." It's true that age is the biggest risk factor — most people are diagnosed after 60. But <strong>roughly 10-15% of cases are diagnosed before age 50</strong>, a group often called "young-onset" PD.
+            Parkinson's is often thought of as "an old person's disease." It's true that age is the biggest risk factor, and most people are diagnosed after 60. But <strong>roughly 10-15% of cases are diagnosed before age 50</strong>, a group often called "young-onset" PD.
           </p>
           <p>
-            You don't have to have a family history. You don't have to show any particular symptoms early on. The disease can quietly progress for years — in your gut, your nose, your sleep — before it ever announces itself in your hands.
+            You don't have to have a family history. You don't have to show any particular symptoms early on. The disease can quietly progress for years in your gut, your nose, your sleep, before it ever announces itself in your hands.
           </p>
           <p>
-            If your grandfather slowed down in his later years and you assumed it was "just aging," it may have been Parkinson's. If your parent was told they had depression or anxiety before the tremors started, that's also common. Parkinson's is underdiagnosed, undertreated, and under-recognized — and that's part of why this research matters.
+            If your grandfather slowed down in his later years and you assumed it was "just aging," it may have been Parkinson's. If your parent was told they had depression or anxiety before the tremors started, that's also common. Parkinson's is underdiagnosed, undertreated, and under-recognized, and that's part of why this research matters.
           </p>
         </div>
         <div class="risk-list fade-up">
           <div class="risk-item">
             <div class="risk-badge">Age</div>
-            <div class="risk-text"><strong>60+ years old</strong> — risk rises sharply. PD affects about 1 in 100 people over 60.</div>
+            <div class="risk-text"><strong>60+ years old.</strong> Risk rises sharply. PD affects about 1 in 100 people over 60.</div>
           </div>
           <div class="risk-item">
             <div class="risk-badge">Sex</div>
-            <div class="risk-text"><strong>Men are 1.5× more likely</strong> to develop PD than women, though women often have a faster disease course.</div>
+            <div class="risk-text"><strong>Men are 1.5x more likely</strong> to develop PD than women, though women often have a faster disease course.</div>
           </div>
           <div class="risk-item">
             <div class="risk-badge">Genetics</div>
-            <div class="risk-text"><strong>Family history</strong> raises risk — but 90%+ of PD cases have no clear genetic cause.</div>
+            <div class="risk-text"><strong>Family history raises risk,</strong> but 90%+ of PD cases have no clear genetic cause.</div>
           </div>
           <div class="risk-item">
             <div class="risk-badge">Environment</div>
@@ -634,58 +681,61 @@
           </div>
           <div class="risk-item">
             <div class="risk-badge">Head Injury</div>
-            <div class="risk-text"><strong>Repeated traumatic brain injury</strong> has been linked to elevated PD risk — one reason the connection to contact sports is studied closely.</div>
+            <div class="risk-text"><strong>Repeated traumatic brain injury</strong> has been linked to elevated PD risk, one reason the connection to contact sports is studied closely.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- OUR LAB -->
+  <!-- OUR RESEARCH -->
   <section class="section our-lab" id="our-research">
     <div class="section-inner">
-      <p class="section-label fade-up">Our Role</p>
-      <h2 class="section-title fade-up">Why <em>our lab,</em> and why now?</h2>
-      <p class="section-lead fade-up">We exist to close the gap between what we know and what we need to know — through rigorous, specific, human-focused science.</p>
+      <p class="section-label fade-up">Our Research</p>
+      <h2 class="section-title fade-up">Why our lab, and why now?</h2>
+      <p class="section-lead fade-up">We exist to close the gap between what we know and what we need to know, through rigorous, specific, human-focused science.</p>
       <div class="lab-grid">
         <div class="lab-prose fade-up">
           <p>
-            Most labs pick a lane. Ours is the intersection of <strong>neuroscience, computational biology, and clinical translation</strong> — meaning we care equally about what's happening at the molecular level and whether it leads to something a patient can actually use.
+            The Srinivasan Lab focuses on two intertwined research areas: <strong>glial biology in the context of neurodegeneration</strong>, specifically the role of astrocytes in Parkinson's disease, and <strong>translationally relevant disease-modifying therapies</strong> for Parkinson's disease.
           </p>
           <p>
-            We are motivated by the gap. We know a lot about what Parkinson's looks like, but far too little about how to stop it. We work on the hard problems: <strong>early biomarkers, disease mechanisms, and circuit-level disruptions</strong> that happen long before diagnosis.
+            Astrocytes are non-neuronal brain cells that were long considered just "support cells." We now know they play an active role in how dopaminergic neurons survive or die. Our lab studies what goes wrong in astrocytes during PD, and how correcting those changes might slow or stop the disease.
           </p>
           <p>
-            Every experiment in this lab is aimed at one goal: shorten the time between the first neuron dying and the first person being helped. That is not a simple problem. It is the one worth solving.
+            On the therapeutic side, we investigate compounds with real potential to modify the course of PD, not just manage its symptoms. The goal is treatments that actually change what happens to neurons, not just how patients feel in the short term.
+          </p>
+          <p>
+            We use techniques ranging from calcium imaging in live brain slices to mouse models of parkinsonism, working across scales from molecules to behavior.
           </p>
         </div>
         <div class="research-pillars fade-up">
           <div class="pillar">
             <div class="pillar-num">01</div>
             <div class="pillar-content">
-              <h4>Early Detection & Biomarkers</h4>
-              <p>Developing tools to identify Parkinson's before symptoms emerge — when treatment could actually prevent damage, not just manage it.</p>
+              <h4>Astrocytes in Neurodegeneration</h4>
+              <p>Investigating how astrocytes contribute to the loss of dopaminergic neurons in PD, including aberrant calcium signaling, alpha-synuclein processing, and astrocyte-microglia interactions.</p>
             </div>
           </div>
           <div class="pillar">
             <div class="pillar-num">02</div>
             <div class="pillar-content">
-              <h4>Circuit & Systems Neuroscience</h4>
-              <p>Mapping how the loss of dopaminergic neurons disrupts broader brain circuits — and where those circuits might be therapeutically targeted.</p>
+              <h4>Disease-Modifying Therapies</h4>
+              <p>Developing and testing interventions that target the underlying disease process, with a focus on compounds that are translationally relevant and could realistically move toward clinical use.</p>
             </div>
           </div>
           <div class="pillar">
             <div class="pillar-num">03</div>
             <div class="pillar-content">
-              <h4>Disease Modeling & Mechanisms</h4>
-              <p>Investigating how and why alpha-synuclein misfolds and spreads — and what might stop it at its source.</p>
+              <h4>Nicotine and Neuroprotection</h4>
+              <p>Tobacco use is inversely correlated with PD risk. We study the molecular mechanisms behind nicotine's known neuroprotective effects to identify targets that could be therapeutically useful without the harms of smoking.</p>
             </div>
           </div>
           <div class="pillar">
             <div class="pillar-num">04</div>
             <div class="pillar-content">
-              <h4>Translational Research</h4>
-              <p>Bridging discoveries in the lab to testable interventions — working toward therapies that slow or halt neurodegeneration.</p>
+              <h4>Calcium Signaling and Glial Physiology</h4>
+              <p>Using advanced imaging techniques and genetically encoded sensors to study spontaneous calcium activity in astrocytes, and how disruptions in that activity relate to neuronal health in PD.</p>
             </div>
           </div>
         </div>
@@ -693,14 +743,176 @@
     </div>
   </section>
 
+  <!-- PUBLICATIONS -->
+  <section class="section publications" id="publications">
+    <div class="section-inner">
+      <p class="section-label fade-up">Selected Publications</p>
+      <h2 class="section-title fade-up">From the lab.</h2>
+      <p class="section-lead fade-up">Published work from the Srinivasan Lab, 2021 onward.</p>
+
+      <div class="pub-list fade-up">
+
+        <div class="pub-item">
+          <div class="pub-year">2024</div>
+          <div class="pub-title">The Role of Astrocytes in Parkinson's Disease</div>
+          <div class="pub-authors">Garcia R, Zarate S, Srinivasan R</div>
+          <div class="pub-journal">Advances in Neurobiology. Astrocyte-Neuron Interactions in Health and Disease, vol 39. Springer Nature, pp. 319-343</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2024</div>
+          <div class="pub-title">The Smoking Cessation Drug Cytisine Requires Systemically Circulating Estrogen for Sex-Specific Neuroprotection in Female Parkinsonian Mice</div>
+          <div class="pub-authors">Zarate SM, Garcia RC, Pandey G, Srinivasan R</div>
+          <div class="pub-journal">Journal of Neuroscience Research</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2024</div>
+          <div class="pub-title">Heterogeneous Brain Region-Specific Responses to Astrocytic Mitochondrial DNA Damage in Mice</div>
+          <div class="pub-authors">Srinivasan Lab</div>
+          <div class="pub-journal">Scientific Reports, 14(1), 18586</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-title">Astrocytes and Alpha-Synuclein: Friend or Foe?</div>
+          <div class="pub-authors">Ozoran H, Srinivasan R</div>
+          <div class="pub-journal">Journal of Parkinson's Disease, 13(8), 1289-1301</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-title">A Novel Rat Model of Vascular Parkinsonism Using the Vasoconstrictor Endothelin-1</div>
+          <div class="pub-authors">Kaufhold C, Grimalo L, Srinivasan R, Sohrabji F</div>
+          <div class="pub-journal">Journal of Neuroinflammation</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div class="pub-title">Aging Reduces Calreticulin Expression and Alters Spontaneous Calcium Signals in Astrocytic Endfeet of the Mouse Dorsolateral Striatum</div>
+          <div class="pub-authors">Zarate SM, Huntington TE, Bagher P, Srinivasan R</div>
+          <div class="pub-journal">NPJ Aging, 9(1), 5</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2022</div>
+          <div class="pub-title">Extracellular S100B Inhibits A-Type Voltage-Gated Potassium Currents and Increases L-Type Voltage-Gated Calcium Channel Activity in Dopaminergic Neurons</div>
+          <div class="pub-authors">Bancroft EA, De La Mora M, Pandey G, Zarate SM, Srinivasan R</div>
+          <div class="pub-journal">Glia, 70(12), 2330-2347</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2022</div>
+          <div class="pub-title">Emerging Roles for Aberrant Astrocytic Calcium Signals in Parkinson's Disease</div>
+          <div class="pub-authors">Bancroft EA, Srinivasan R</div>
+          <div class="pub-journal">Frontiers in Physiology, 12, 812212</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2021</div>
+          <div class="pub-title">Cytisine is Neuroprotective in Female but Not Male 6-Hydroxydopamine Lesioned Parkinsonian Mice and Acts in Combination with 17-Beta-Estradiol</div>
+          <div class="pub-authors">Zarate SM, Pandey G, Chilukuri S, Garcia JA, Cude B, Storey S, Srinivasan R</div>
+          <div class="pub-journal">Journal of Neurochemistry</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2021</div>
+          <div class="pub-title">Adeno-Associated Virus Expression of Alpha-Synuclein as a Tool to Model Parkinson's Disease: Current Understanding and Knowledge Gaps</div>
+          <div class="pub-authors">Huntington TE, Srinivasan R</div>
+          <div class="pub-journal">Aging and Disease, 12(4), 1120-1137</div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2021</div>
+          <div class="pub-title">Astrocytic Mitochondria in Adult Mouse Brain Slices Show Spontaneous Calcium Influx Events with Unique Properties</div>
+          <div class="pub-authors">Huntington TE, Srinivasan R</div>
+          <div class="pub-journal">Cell Calcium, 96, 102383</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section team" id="team">
+    <div class="section-inner">
+      <p class="section-label fade-up">The People</p>
+      <h2 class="section-title fade-up">Meet the team.</h2>
+      <p class="section-lead fade-up">The Srinivasan Lab is based in the Department of Neuroscience and Experimental Therapeutics at Texas A&M University College of Medicine.</p>
+
+      <div class="team-section-label fade-up">Principal Investigator</div>
+      <div class="team-grid fade-up">
+        <div class="team-card">
+          <div class="team-avatar">RS</div>
+          <div class="team-name">Dr. Rahul Srinivasan</div>
+          <div class="team-role">Principal Investigator</div>
+          <div class="team-bio">Associate Professor, Department of Neuroscience and Experimental Therapeutics. Dr. Srinivasan's research focuses on the role of astrocytes in neurodegeneration and the mechanisms behind nicotine's neuroprotective effects in Parkinson's disease.</div>
+        </div>
+      </div>
+
+      <div class="team-section-label fade-up">Graduate Students</div>
+      <div class="team-grid fade-up">
+        <div class="team-card">
+          <div class="team-avatar">CR</div>
+          <div class="team-name">Cristobal Rodriguez</div>
+          <div class="team-role">Graduate Student</div>
+          <div class="team-bio">PhD Student, Neuroscience and Experimental Therapeutics.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">RG</div>
+          <div class="team-name">Roger Garcia</div>
+          <div class="team-role">Graduate Student</div>
+          <div class="team-bio">PhD Student, Neuroscience and Experimental Therapeutics.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">DD</div>
+          <div class="team-name">Debanjana Das</div>
+          <div class="team-role">Graduate Student</div>
+          <div class="team-bio">PhD Student, Neuroscience and Experimental Therapeutics.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">GH</div>
+          <div class="team-name">Grace Hall</div>
+          <div class="team-role">Graduate Student</div>
+          <div class="team-bio">PhD Student, Neuroscience and Experimental Therapeutics.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">SR</div>
+          <div class="team-name">Savannah Ruffino</div>
+          <div class="team-role">Graduate Student</div>
+          <div class="team-bio">PhD Student, Neuroscience and Experimental Therapeutics.</div>
+        </div>
+      </div>
+
+      <div class="team-section-label fade-up">Undergraduate Researchers</div>
+      <div class="team-grid fade-up">
+        <div class="team-card">
+          <div class="team-avatar">PG</div>
+          <div class="team-name">Pranavi Ghosh</div>
+          <div class="team-role">Undergraduate Researcher</div>
+          <div class="team-bio">Undergraduate researcher in the Srinivasan Lab.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects" style="background: #fff; border-top: 1px solid var(--warm-mid);">
+    <div class="section-inner">
+      <p class="section-label fade-up">Current Work</p>
+      <h2 class="section-title fade-up">Projects.</h2>
+      <p class="section-lead fade-up">Ongoing research projects in the Srinivasan Lab.</p>
+      <!-- projects go here -->
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo"><span>PD</span> Research Lab</div>
-    <div class="footer-note">University Research Laboratory · [Your Department] · [Your Institution]</div>
+    <div class="footer-logo">Srinivasan <span>Lab</span></div>
   </footer>
 
   <script>
-    // Fade-up on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
